@@ -1,0 +1,60 @@
+.row {
+  position: relative;
+  z-index: 999;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 800px;
+  .back {
+    position: absolute;
+    left: -10%;
+  }
+  .next {
+    position: absolute;
+    right: -10%;
+  }
+  .text {
+    width: 60%;
+    margin: 0 10% 0 0;
+    padding: 30px;
+    position: relative;
+
+    p {
+      line-height: 32px;
+    }
+  }
+}
+.gradient1 {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: rgb(130, 16, 55);
+  background: radial-gradient(
+    circle,
+    rgba(130, 16, 55, 1) 0%,
+    rgba(83, 28, 46, 1) 0%,
+    rgba(0, 0, 0, 1) 61%
+  );
+  top: 30%;
+  left: 0;
+}
+.gradient2 {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: rgb(130, 16, 55);
+  background: radial-gradient(
+    circle,
+    rgba(130, 16, 55, 1) 0%,
+    rgba(83, 28, 46, 1) 0%,
+    rgba(0, 0, 0, 1) 61%
+  );
+  bottom: 30%;
+  right: 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}

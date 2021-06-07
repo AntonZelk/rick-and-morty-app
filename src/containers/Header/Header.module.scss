@@ -1,0 +1,57 @@
+header {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  color: #fff;
+  font-size: 20px;
+  font-family: Inter, sans-serif;
+  z-index: 9999;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.19);
+}
+.row {
+  width: 80%;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    img {
+      width: 60px;
+      height: 60px;
+      margin: 0 15px 0 0;
+    }
+  }
+  .menu {
+    display: flex;
+    align-items: center;
+    width: 30%;
+
+    .list {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      a {
+        &::after {
+          color: #fff;
+          content: '\2B07';
+
+          font-size: 20px;
+          padding: 0 0 0 8px;
+        }
+      }
+    }
+  }
+}

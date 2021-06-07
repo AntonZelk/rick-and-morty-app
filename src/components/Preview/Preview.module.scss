@@ -1,0 +1,43 @@
+.container {
+  width: 100%;
+  margin-top: 90px;
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  overflow: hidden;
+
+  .cosmos {
+    left: 20%;
+    width: 60%;
+    height: 80vh;
+    position: absolute;
+  }
+  .preview {
+    position: relative;
+    z-index: 9999;
+    .row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .text {
+        max-width: 900px;
+        width: 100%;
+        .rowText {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-around;
+          img {
+            &:nth-child(1) {
+              margin: 20px 20px 0 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.planet {
+  width: 500px;
+  height: 500px;
+}

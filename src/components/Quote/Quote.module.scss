@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css?family=Yesteryear');
+$lines-color: fade-out(#fff, 0.3);
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  margin-top: -200px;
+  margin-left: -200px;
+  overflow: hidden;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  position: absolute;
+  z-index: 10;
+  height: 20px;
+  width: 20px;
+  left: calc(50%-20px);
+  background-image: linear-gradient(45deg, #ff049f, #9a0fe0 45%);
+  border-radius: 50%;
+  transform: scale(0);
+}
+
+.circle.active {
+  animation: circle 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.line {
+  position: absolute;
+  z-index: 10;
+  width: 198px;
+  height: 1px;
+  top: 50%;
+  transform: scaleX(0);
+}
+
+.line.left {
+  left: 20px;
+  transform-origin: 100% 50%;
+
+  background: $lines-color;
+}
+
+.line.left.active {
+  animation: lines 1s ease-in-out 0.8s, line-left 1s steps(1) 0.8s;
+}
+
+.line.right {
+  right: 20px;
+  background: $lines-color;
+  transform-origin: 0% 50%;
+}
+.line.right.active {
+  animation: lines 1s ease-in-out 0.8s, line-right 1s steps(1) 0.8s;
+}
+
+.bracket {
+  position: absolute;
+  z-index: 10;
+  height: 300px;
+  width: 1px;
+  background: $lines-color;
+}
+
+.bracket.active {
+  animation: bracket 0.4s ease-out 1.7s;
+  animation-fill-mode: both;
+}
+
+.bracket:before,
+.bracket:after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 25px;
+  height: 1px;
+}
+
+.bracket.right:before,
+.bracket.right:after {
+  background: $lines-color;
+}
+
+.bracket.left {
+  left: 20px;
+}
+
+.bracket.left:before {
+  top: 0;
+  left: 0;
+  transform-origin: 0% 50%;
+}
+
+.bracket.left.active:before {
+  animation: bracket-line 0.2s ease-out 2.1s;
+  animation-fill-mode: both;
+}
+
+.bracket.left:after {
+  bottom: 0;
+  left: 0;
+  transform-origin: 0% 50%;
+}
+
+.bracket.left.active:after {
+  animation: bracket-line 0.2s ease-out 2.1s;
+  animation-fill-mode: both;
+}
+
+.bracket.left:before,
+.bracket.left:after {
+  background: $lines-color;
+}
+
+.bracket.right {
+  right: 20px;
+}
+
+.bracket.right:before {
+  top: 0;
+  right: 0;
+  transform-origin: 100% 50%;
+}
+
+.bracket.right.active:before {
+  animation: bracket-line 0.2s ease-out 2.1s;
+  animation-fill-mode: both;
+}
+
+.bracket.right:after {
+  bottom: 0;
+  right: 0;
+  transform-origin: 100% 50%;
+}
+
+.bracket.right.active:after {
+  animation: bracket-line 0.2s ease-out 2.1s;
+  animation-fill-mode: both;
+}
+
+.big {
+  position: absolute;
+  z-index: 5;
+  top: 173px;
+  width: 400px;
+  text-align: center;
+  font-size: 5rem;
+  letter-spacing: 2px;
+  color: #fff;
+  line-height: 50px;
+  font-family: 'yesteryear', cursive;
+  background-image: linear-gradient(33deg, #9a0fe0 25%, #ff049f);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: 0.2s ease-in;
+}
+
+.small {
+  z-index: 10;
+  width: 400px;
+  text-align: center;
+
+  font-weight: 300;
+  font-size: 28px;
+  color: #ffffff;
+  line-height: 30px;
+  word-spacing: 0.5rem;
+}
+
+.firstLetter {
+  font-family: yesteryear, cursive;
+  font-size: 3.5rem;
+  background-image: linear-gradient(33deg, #9a0fe0 25%, #ff049f);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.small.bottom.active {
+  animation: small-bottom 0.5s ease-out 2.2s;
+  animation-fill-mode: both;
+}
+
+@keyframes circle {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  90%,
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes lines {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes line-left {
+  0% {
+    transform-origin: 100% 50%;
+  }
+  50%,
+  100% {
+    transform-origin: 0% 50%;
+  }
+}
+
+@keyframes line-right {
+  0% {
+    transform-origin: 0% 50%;
+  }
+  50%,
+  100% {
+    transform-origin: 100% 50%;
+  }
+}
+
+@keyframes bracket {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bracket-line {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes reveal {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes small-bottom {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

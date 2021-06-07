@@ -1,0 +1,92 @@
+.button {
+  background: none;
+  margin: 0;
+  padding: 0;
+  color: #ddf;
+
+  text-align: center;
+  padding-top: 80px;
+}
+.hola,
+.hola::before,
+.hola::after,
+.hola span,
+.hola span::before,
+.hola span::after {
+  transition: all ease 0.5s;
+}
+
+.hola {
+  position: relative;
+  display: inline-block;
+  padding: 0.3em;
+  margin: 1em;
+  border: solid 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.hola:hover {
+  box-shadow: 0 0 5em 0.5em rgba(50, 50, 150, 0.5);
+}
+
+.hola span {
+  display: inline-block;
+  width: 100%;
+  padding: 0.6em 2em;
+}
+
+.hola:hover span {
+  background-color: #fff;
+  color: #112;
+}
+
+.hola::before,
+.hola::after,
+.hola span::before,
+.hola span::after {
+  content: '';
+  position: absolute;
+  border: 1px;
+}
+
+.hola::before,
+.hola span::before {
+  border-style: solid none;
+}
+
+.hola::before,
+.hola span::after {
+  left: 0;
+  top: -0.4em;
+  width: 100%;
+  height: calc(100% + 0.8em);
+}
+
+.hola::after,
+.hola span::after {
+  border-style: none solid;
+}
+
+.hola::after,
+.hola span::before {
+  top: 0;
+  left: -0.4em;
+  height: 100%;
+  width: calc(100% + 0.8em);
+}
+
+.hola:hover::after,
+.hola:hover span::after {
+  transform: scaleY(0);
+}
+
+.hola:hover::before,
+.hola:hover span::before {
+  transform: scaleX(0);
+}
+
+.hola:hover span::after,
+.hola:hover span::before {
+  opacity: 0;
+}
