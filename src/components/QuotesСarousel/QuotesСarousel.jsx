@@ -1,11 +1,11 @@
-import QuotesPerson from '../QuotesPerson/QuotesPerson';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { requestQuotes } from '../../actions/quotesAction';
 
-import Error from '../../components/UI/Error/Error';
-import Loader from '../../components/UI/Loader/Loader';
+import QuotesPerson from '../../components/QuotesPerson/QuotesPerson';
+import Error from '../UI/Error/Error';
+import Loader from '../UI/Loader/Loader';
 
 import classes from './QuotesСarousel.module.scss';
 

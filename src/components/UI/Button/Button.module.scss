@@ -5,7 +5,6 @@
   color: #ddf;
 
   text-align: center;
-  padding-top: 80px;
 }
 .hola,
 .hola::before,
@@ -89,4 +88,19 @@
 .hola:hover span::after,
 .hola:hover span::before {
   opacity: 0;
+}
+.button:disabled {
+  .hola:hover span {
+    background-color: #000;
+    color: #ddf;
+  }
+  .hola:hover {
+    box-shadow: 0 0 5em 0.5em rgba(255, 0, 0, 0.5);
+  }
+  .hola::before,
+  .hola::after,
+  .hola span::before,
+  .hola span::after {
+    border: none;
+  }
 }

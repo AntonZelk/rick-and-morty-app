@@ -3,10 +3,10 @@ import { showError } from '../actions/errorAction';
 import { fetchQuotes, getCurrentPerson } from '../actions/quotesAction';
 import { hideLoader, showLoader } from '../actions/loaderAction';
 import { REQUEST_QUOTES } from '../actions/types';
-import axios from '../axios/axios-db';
+import axiosDB from '../axios/axios-db';
 
 const fetchQuotesDB = async () => {
-  return await axios.get('/quotes.json');
+  return await axiosDB.get('/quotes.json');
 };
 
 function* sagaQuotesWorker() {

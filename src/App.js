@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
-import WikiPage from './pages/WikiPage';
+import WikiPage from './pages/WikiPage/WikiPage';
 
 import StartLoader from './components/UI/StartLoader/StartLoader';
 
