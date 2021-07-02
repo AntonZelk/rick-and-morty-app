@@ -1,8 +1,13 @@
 import { all } from 'redux-saga/effects';
 import { sagaQuotesWatcher } from './quotesSaga';
-import { sagaItemsWatcher } from './wikiSaga';
-import { sagaMaxPagesWatcher } from './wikiSaga';
+import { sagaItemsWatcher, sagaItemWatcher } from './wikiSaga';
+import { sagaPagesWatcher } from './wikiSaga';
 
 export function* rootSaga() {
-  yield all([sagaQuotesWatcher(), sagaItemsWatcher(), sagaMaxPagesWatcher()]);
+  yield all([
+    sagaQuotesWatcher(),
+    sagaItemsWatcher(),
+    sagaItemWatcher(),
+    sagaPagesWatcher(),
+  ]);
 }

@@ -3,27 +3,19 @@ import {
   HIDE_LOADER,
   SHOW_ERROR,
   FETCH_ITEMS,
-  SET_CURRENT_PAGE,
-  SET_CHARACTERS_MAX_PAGE,
-  SET_EPISODES_MAX_PAGE,
-  SET_LOCATIONS_MAX_PAGE,
-  FETCH_NAMES,
-  FETCH_NAMES_CHARACTERS,
-  FETCH_NAMES_LOCATIONS,
-  FETCH_NAMES_EPISODES,
+  FILTER_NAMES,
+  SET_CURRENT_ITEM,
+  SET_MAX_PAGES,
 } from '../actions/types';
 
 const initialState = {
   isLoading: false,
   isError: false,
   currentPage: 1,
+  maxPages: null,
   fetchedItems: [],
-  fetchedNamesCharcaters: [],
-  fetchedNamesLocations: [],
-  fetchedNamesEpisodes: [],
-  maxCharactersPage: '',
-  maxEpisodesPage: '',
-  maxLocationsPage: '',
+  filteredItems: [],
+  currentItem: {},
 };
 
 export const wikiReducer = (state = initialState, action) => {
@@ -36,20 +28,12 @@ export const wikiReducer = (state = initialState, action) => {
       return { ...state, isError: true };
     case FETCH_ITEMS:
       return { ...state, fetchedItems: action.payload };
-    case FETCH_NAMES_CHARACTERS:
-      return { ...state, fetchedNamesCharcaters: action.payload };
-    case FETCH_NAMES_LOCATIONS:
-      return { ...state, fetchedNamesLocations: action.payload };
-    case FETCH_NAMES_EPISODES:
-      return { ...state, fetchedNamesEpisodes: action.payload };
-    case SET_CURRENT_PAGE:
-      return { ...state, currentPage: action.payload };
-    case SET_CHARACTERS_MAX_PAGE:
-      return { ...state, maxCharactersPage: action.payload };
-    case SET_EPISODES_MAX_PAGE:
-      return { ...state, maxEpisodesPage: action.payload };
-    case SET_LOCATIONS_MAX_PAGE:
-      return { ...state, maxLocationsPage: action.payload };
+    case FILTER_NAMES:
+      return { ...state, filteredItems: action.payload };
+    case SET_CURRENT_ITEM:
+      return { ...state, currentItem: action.payload };
+    case SET_MAX_PAGES:
+      return { ...state, maxPages: action.payload };
     default:
       return state;
   }

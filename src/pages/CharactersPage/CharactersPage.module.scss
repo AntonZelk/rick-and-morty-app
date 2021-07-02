@@ -1,12 +1,11 @@
-.h1 {
-  font-size: 120px;
-  margin: 200px 0 0 200px;
+.container {
+  margin-top: 100px;
 }
-.btnRow {
+.backWrapper {
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }
-
 .characterRow {
   position: relative;
 

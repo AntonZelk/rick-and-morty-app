@@ -1,27 +1,34 @@
 import {
-  REQUEST_ITEMS,
   FETCH_ITEMS,
-  SET_CURRENT_PAGE,
-  REQUEST_ALL_ITEMS,
-  SET_CHARACTERS_MAX_PAGE,
-  SET_EPISODES_MAX_PAGE,
-  SET_LOCATIONS_MAX_PAGE,
-  FETCH_NAMES_CHARACTERS,
-  FETCH_NAMES_LOCATIONS,
-  FETCH_NAMES_EPISODES,
-  REQUEST_CHARACTERS_NAMES,
-  GET_ARRAY_PROPERTY,
+  FILTER_NAMES,
+  REQUEST_ITEM,
+  REQUEST_ITEMS,
+  REQUEST_PAGE,
+  SET_CURRENT_ITEM,
+  SET_MAX_PAGES,
 } from './types';
 
-export const requestItems = (path) => {
+export const requestItems = (path, numberPage) => {
   return {
     type: REQUEST_ITEMS,
-    payload: path,
+    path,
+    numberPage,
   };
 };
-export const requestAllItems = () => {
+
+export const requestItem = (path, numberPage) => {
   return {
-    type: REQUEST_ALL_ITEMS,
+    type: REQUEST_ITEM,
+    path,
+    numberPage,
+  };
+};
+
+export const requestPage = (path, numberPage) => {
+  return {
+    type: REQUEST_PAGE,
+    path,
+    numberPage,
   };
 };
 
@@ -31,81 +38,55 @@ export const fetchItems = (payload) => {
     payload,
   };
 };
-export const fetchNamesCharacters = (payload) => {
-  return {
-    type: FETCH_NAMES_CHARACTERS,
-    payload,
-  };
+
+const doNameWord = (string) => {
+  let newS = string
+    .split(/\s+/)
+    .map((word) => {
+      let newWord = word
+        .split(/-/)
+        .map((w) => {
+          if (w !== '') {
+            return w[0].toUpperCase() + w.substring(1);
+          } else {
+            return null;
+          }
+        })
+        .join('-');
+      if (word !== '') {
+        return newWord[0].toUpperCase() + newWord.substring(1);
+      } else {
+        return null;
+      }
+    })
+    .join(' ');
+
+  return newS.trim();
 };
 
-export const requestCharactersNames = (payload) => {
-  return {
-    type: REQUEST_CHARACTERS_NAMES,
-    payload,
-  };
-};
-export const fetchNamesLocations = (payload) => {
-  return {
-    type: FETCH_NAMES_LOCATIONS,
-    payload,
-  };
-};
-export const fetchNamesEpisodes = (payload) => {
-  return {
-    type: FETCH_NAMES_EPISODES,
-    payload,
-  };
-};
-
-export const setCurrentPage = (payload) => {
-  return {
-    type: SET_CURRENT_PAGE,
-    payload,
-  };
-};
-
-export const setCharactersMaxPage = (payload) => {
-  return {
-    type: SET_CHARACTERS_MAX_PAGE,
-    payload,
-  };
-};
-export const setEpisodesMaxPage = (payload) => {
-  return {
-    type: SET_EPISODES_MAX_PAGE,
-    payload,
-  };
-};
-export const setLocationsMaxPage = (payload) => {
-  return {
-    type: SET_LOCATIONS_MAX_PAGE,
-    payload,
-  };
-};
-
-export const getNextPage = (payload) => {
-  payload++;
-  return {
-    type: SET_CURRENT_PAGE,
-    payload,
-  };
-};
-export const getPreviosPage = (payload) => {
-  payload--;
-  return {
-    type: SET_CURRENT_PAGE,
-    payload,
-  };
-};
-
-export const getArrayProperty = (array, property) => {
-  const arrayProperty = [];
-  array.forEach((obj) => {
-    arrayProperty.push(obj[property]);
+export const setFilteredNames = (array, value) => {
+  let filterArray = array.filter((obj) => {
+    return obj.name.startsWith(`${doNameWord(value)}`);
   });
-
+  if (value === '') {
+    filterArray = [];
+  }
   return {
-    type: GET_ARRAY_PROPERTY,
-    payload: arrayProperty,
+    type: FILTER_NAMES,
+    payload: filterArray,
+  };
+};
+
+export const setCurrentItem = (payload) => {
+  return {
+    type: SET_CURRENT_ITEM,
+    payload,
+  };
+};
+
+export const setMaxPages = (payload) => {
+  return {
+    type: SET_MAX_PAGES,
+    payload,
   };
 };
